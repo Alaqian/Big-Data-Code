@@ -10,9 +10,7 @@ def read_input(input):
         yield line.split()
 
 
-def main(
-    separator="\t",
-):  # default separator is a tab - which is \t - can change it to something else
+def main(separator='\t'): # default separator is a tab - which is \t - can change it to something else
     # input comes from STDIN (standard input) - read and input from standard input
     data = read_input(sys.stdin)
 
@@ -23,7 +21,7 @@ def main(
         #
         # tab-delimited; the trivial word count is 1
         for word in line:
-            print("%s%s%d" % (word, separator, 1))
+            print('%s%s%d' % (word, separator, 1))
 
 
 # how to test locally in bash/linus: cat <input> | python mapper.py
