@@ -1,5 +1,7 @@
 # N-Grams
 
+**Note**: This homework was completed using the docker clouder image: https://hub.docker.com/r/cloudera/quickstart/
+
 ## Considerations
 
 ### Characters considered
