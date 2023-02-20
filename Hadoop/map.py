@@ -14,4 +14,4 @@ for line in sys.stdin:
             print("%s%s%d" % ("bigram_count", "\t", 1))
         if i < words_in_line - 2:
             print("%s%s%d" % (words[i] + " " + words[i + 1] + " " + words[i + 2], "\t", 1))
-            print("%s%s%d" % ("trigram count", "\t", 1))
+            print("%s%s%d" % ("trigram_count", "\t", 1))
