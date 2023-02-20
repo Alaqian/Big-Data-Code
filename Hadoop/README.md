@@ -2,9 +2,11 @@
 
 **Note**: This homework was completed using the cloudera docker image: https://hub.docker.com/r/cloudera/quickstart/
 
-#TODO Add instructiosn on downloading, installing and running the docker image
+#TODO Add instructions on downloading, installing and running the docker image
 
-## Considerations
+## Issues and Considerations
+
+To make this assignment straightforward, a number of considerations were made that make the calculated n-gram count and conditional probabilities inaccurate.
 
 ### Characters considered
 
@@ -12,7 +14,12 @@ For the purpose of this assignment, all characters not in this set: [a-z, A-Z, 0
 ```python
 re.sub("[^a-zA-z0-9]", " ", text.lower())
 ```
-However this would mistreat characters with hyphens or apostrophes such as `don't` or `mother-in-law` into `don t` and `mother in law`. A more appropriate regex to include these words can be given by the two options below. (source: https://stackoverflow.com/questions/27715581/):
+#### Hypenated and Apostrophe Words
+The regex used would mistreat characters with hyphens or apostrophes such as `Don't` or `Mother-in-law` into `don t` and `mother in law`. 
+#### Periods
+The regex used would also mistreat lines with periods in them. for instance, in the line `... this is something I hate. Puppie are adorable and ..." it will consider "i hate puppies" as a trigram (😢).
+#### Potential Solution for Hypenated and Apostrophe Words
+A more appropriate regex to include hyphenated and appsotrophe words might be given by the two options below. (source: https://stackoverflow.com/questions/27715581/):
 ```python
 re.findall(r"(?!'.*')\b[\w'-]+\b", line.lower())
 ```
