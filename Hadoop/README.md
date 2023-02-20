@@ -1,6 +1,8 @@
 # N-Grams
 
-**Note**: This homework was completed using the docker clouder image: https://hub.docker.com/r/cloudera/quickstart/
+**Note**: This homework was completed using the cloudera docker image: https://hub.docker.com/r/cloudera/quickstart/
+
+#TODO Add instructiosn on downloading, installing and running the docker image
 
 ## Considerations
 
