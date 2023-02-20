@@ -16,4 +16,4 @@ or
 ```python
 re.findall(r"[A-Za-z]+(?:[-'][A-Za-z]+)*", line.lower())
 ```
-However, this would also include possessive words such as `mother-in-law's`. Also, this returns a list of words instead of a sigle string and Professor Juan warned us about using lists. I am not sure if this is what he meant but it's already 3 pm and Sunday so I can't ask him.
+However, this would also include possessive words such as `professor's` which might be undesired. Also, this returns a list of words instead of a sigle string and Professor Juan warned us about using lists. I am not sure if this is what he meant but it's already 3 pm and Sunday so I can't ask him.
