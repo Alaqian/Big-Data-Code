@@ -1,23 +1,43 @@
 # N-Grams
 
 ## Running the jobs
+The code failed on all of the homework files but I was able to run it on smaller files. The file 'juan.txt' in this folder was used to generate the results. Source: https://en.wikipedia.org/wiki/Juan_Rodríguez_Cabrillo
+### Hadoop
+Transfer the files to the Hadoop cluster home directory:
+```cmd
+hadoop fs -put map1.py
+hadoop fs -put red1.py
+hadoop fs -put map2.py
+hadoop fs -put red2.py
+hadoop fs -put hw1.2/*
+hadoop fs -put juan.txt
+```
 To run the first map reduce job use:
+```cmd
+mapred streaming -file map1.py -mapper "python map1.py" -file red1.py -reducer "python red1.py" -input juan.txt -output out1
 ```
-mapred streaming -file map1.py -mapper "python map1.py" -file red1.py -reducer "python red1.py" -input hw1.2/* -output out1
-```
-where hw1.2/ is the directory containing the text files and out1 is ythe first output directory
+where hw1.2/ is the directory containing the text files, juan.txt is the text file used to test the code and out1 is the first output directory.
 
-Then read out1 using for unigram_count, bigram_count and trigram_count values:
-```
+Then read out1 for unigram_count, bigram_count and trigram_count values:
+```cmd
 hadoop fs -cat out1/*
 ```
-lets say unigram_count = 1000, bigram_count =999 and trigram_count = 998
+The counts are unigram_count = 156, bigram_count = 154 and trigram_count = 152
 
 Then run the second map reduce job:
-```
-mapred streaming -file map2.py -mapper "python map2.py 1000 999 9998" -file red2.py -reducer "python red2.py" -input out1/* -output out2
+```cmd
+mapred streaming -file map2.py -mapper "python map2.py 156 154 152  " -file red2.py -reducer "python red2.py" -input out1/* -output out2
 
 haoop fs -cat out2/*
+```
+### Bash
+Run the first map reduce
+```bash
+cat juan.txt| python map1.py|sort|python red1.py >> out1.txt
+```
+read the out.txt file and run the second map reduce job:
+```bash
+cat out1.txt| python map2.py 156 154 152|sort|python red2.py >> out2.txt
 ```
 ## Issues and Considerations
 
