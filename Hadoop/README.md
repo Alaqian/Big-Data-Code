@@ -14,7 +14,7 @@ lets say unigram_count = 1000, bigram_count =999 and trigram_count = 998
 
 Then run the second map reduce job:
 ```
-mapred streaming -file map2.py -mapper "python map2.py 1000 999 9998" -file red2.py -reducer "python red2.py" -input hw1.2/* -output out2
+mapred streaming -file map2.py -mapper "python map2.py 1000 999 9998" -file red2.py -reducer "python red2.py" -input out1/* -output out2
 
 haoop fs -cat out2/*
 ```
