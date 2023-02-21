@@ -16,13 +16,13 @@ To run the first map reduce job use:
 ```cmd
 mapred streaming -file map1.py -mapper "python map1.py" -file red1.py -reducer "python red1.py" -input juan.txt -output out1
 ```
-where hw1.2/ is the directory containing the text files and out1 is ythe first output directory
+where hw1.2/ is the directory containing the text files, juan.txt is the text file used to test the code and out1 is the first output directory.
 
-Then read out1 using for unigram_count, bigram_count and trigram_count values:
+Then read out1 for unigram_count, bigram_count and trigram_count values:
 ```cmd
 hadoop fs -cat out1/*
 ```
-lets say unigram_count = 156, bigram_count = 154 and trigram_count = 152
+The counts are unigram_count = 156, bigram_count = 154 and trigram_count = 152
 
 Then run the second map reduce job:
 ```cmd
