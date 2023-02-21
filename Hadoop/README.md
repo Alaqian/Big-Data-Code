@@ -1,5 +1,6 @@
 # N-Grams
 
+## Running the jobs
 To run the first map reduce job use:
 ```
 mapred streaming -file map1.py -mapper "python map1.py" -file red1.py -reducer "python red1.py" -input hw1.2/* -output out1
@@ -41,7 +42,7 @@ or
 ```python
 re.findall(r"[A-Za-z0-9]+(?:[-'][A-Za-z0-9]+)*", line.lower())
 ```
-However, this would also include possessive words such as `professor's` which might be undesired. Also, this returns a list of words instead of a sigle string and Professor Juan warned us about using lists. I am not sure if this is what he meant but it's already 3 pm and Sunday so I can't ask him.
+However, this would also include possessive words such as `professor's` which might be undesired. Also, this returns a list of words instead of a sigle string and Professor Juan warned us about using lists. 
 
 ### Line by line
 #TODO Explain why bigram and trigram counts are not accurate since the mapper reads the input line by line
