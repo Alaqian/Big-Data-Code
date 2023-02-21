@@ -1,7 +1,7 @@
 # N-Grams
 
 ## Running the jobs
-First transfer all the code to Hadoop home directory:
+Transfer the files to the Hadoop cluster home directory:
 ```cmd
 hadoop fs -put map1.py
 hadoop fs -put red1.py
