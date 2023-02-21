@@ -1,0 +1,34 @@
+best cat in	1
+best cat is	1
+best cat	2
+best	2
+bigram_count	21
+cat in the	3
+cat in	3
+cat is the	1
+cat is	1
+cat	4
+hat is the	1
+hat is	1
+hat	3
+in the hat	3
+in the	3
+in	3
+is known	1
+is the best	1
+is the cat	1
+is the	2
+is	3
+known	1
+the best cat	2
+the best	2
+the cat in	2
+the cat	2
+the hat is	1
+the hat	3
+the	7
+this is known	1
+this is	1
+this	1
+trigram_count	18
+unigram_count	24

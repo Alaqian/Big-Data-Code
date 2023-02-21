@@ -1,0 +1,3 @@
+The cat in the hat is the best cat in the hat.
+The best cat is the cat in the hat.
+This is known.
