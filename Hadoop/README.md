@@ -42,6 +42,16 @@ mapred streaming -file map2.py -mapper "python map2.py 1492 1475 1458" -file red
 ```cmd
 haoop fs -cat out2/*
 ```
+## Results
+for the file [cat.txt](cat.txt), the first map reduce job:
+```bash
+cat cat.txt | python map1.py |sort |python red1.py >> cat1.txt
+```
+The output of this job is [cat1.txt](cat1.txt). Bigrams = 24, unigrams = 21. trigrams = 18. Second Mar
+```bash
+cat cat1.txt | python map2.py 24 21 18 |sort |python red2.py >> cat2.txt
+```
+The probabilities are given in [cat2.txt](cat2.txt). 
 
 ## Issues and Considerations
 
