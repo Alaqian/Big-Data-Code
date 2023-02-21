@@ -27,7 +27,8 @@ The counts are unigram_count = 1492, bigram_count = 1475 and trigram_count = 145
 Then run the second map reduce job:
 ```cmd
 mapred streaming -file map2.py -mapper "python map2.py 1492 1475 1458  " -file red2.py -reducer "python red2.py" -input out1/* -output out2
-
+```
+```cmd
 haoop fs -cat out2/*
 ```
 ### Bash
