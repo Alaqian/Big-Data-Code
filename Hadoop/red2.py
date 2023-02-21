@@ -22,22 +22,24 @@ def main(separator="\t"):
     #   group - iterator yielding all ["&lt;current_word&gt;", "&lt;count&gt;"] items
     for key, group in groupby(data, itemgetter(0)):
         # dangerous, could run out of memory, loads everything at once.
-        try:
-            w1 = ""
-            w2 = ""
-            for key, value in group:
-                w1 = key
-                value = value.split()
-                if len(value) == 1:
-                    pw1 = int(value[0])
-                else:
-                    pw1nw2 = int(value[-1])
-                    w2 = str(value[-2])
-            pw2gw1 = pw1nw2 / pw1
-            print("%s%s%d" % ("P(" + w1 + "|" + w2 + ")", "\t", pw2gw1))
-        except ValueError:
-            # count was not a number, so silently discard this item
-            pass
+        # try:
+        w1 = ""
+        w2 = ""
+        for key, value in group:
+            w1 = key
+            value = value.split()
+            if len(value) == 1:
+                pw1 = float(value[0])
+                print(pw1)
+            else:
+                pw1nw2 = float(value[-1])
+                print(pw1nw2)
+                w2 = str(value[-2])
+        pw2gw1 = pw1nw2 / pw1
+        print("%s%s%f" % ("P(" + w2 + "|" + w1 + ")", " = ", pw2gw1))
+        # except ValueError:
+        # count was not a number, so silently discard this item
+        #  pass
 
 
 if __name__ == "__main__":
