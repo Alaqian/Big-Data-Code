@@ -22,22 +22,22 @@ Then read out1 for unigram_count, bigram_count and trigram_count values:
 ```cmd
 hadoop fs -cat out1/*
 ```
-The counts are unigram_count = 156, bigram_count = 154 and trigram_count = 152
+The counts are unigram_count = 1492, bigram_count = 1475 and trigram_count = 1458
 
 Then run the second map reduce job:
 ```cmd
-mapred streaming -file map2.py -mapper "python map2.py 156 154 152  " -file red2.py -reducer "python red2.py" -input out1/* -output out2
+mapred streaming -file map2.py -mapper "python map2.py 1492 1475 1458  " -file red2.py -reducer "python red2.py" -input out1/* -output out2
 
 haoop fs -cat out2/*
 ```
 ### Bash
 Run the first map reduce
 ```bash
-cat juan.txt| python map1.py|sort|python red1.py >> out1.txt
+cat juan.txt | python map1.py |sort |python red1.py >> out1.txt
 ```
 read the out.txt file and run the second map reduce job:
 ```bash
-cat out1.txt| python map2.py 156 154 152|sort|python red2.py >> out2.txt
+cat out1.txt |python map2.py 1492 1475 1458 |sort |python red2.py >> out2.txt
 ```
 ## Issues and Considerations
 
