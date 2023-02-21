@@ -30,7 +30,7 @@ mapred streaming -file map2.py -mapper "python map2.py 156 154 152  " -file red2
 
 haoop fs -cat out2/*
 ```
-## Bash
+### Bash
 Run the first map reduce
 ```bash
 cat juan.txt| python map1.py|sort|python red1.py >> out1.txt
