@@ -1,20 +1,28 @@
 # N-Grams
 
 ## Running the jobs
-To run the first map reduce job use:
+First transfer all the code to Hadoop home directory:
+```cmd
+hadoop fs -put map1.py
+hadoop fs -put red1.py
+hadoop fs -put map2.py
+hadoop fs -put red2.py
+hadoop fs -put hw1.2/*
 ```
+To run the first map reduce job use:
+```cmd
 mapred streaming -file map1.py -mapper "python map1.py" -file red1.py -reducer "python red1.py" -input hw1.2/* -output out1
 ```
 where hw1.2/ is the directory containing the text files and out1 is ythe first output directory
 
 Then read out1 using for unigram_count, bigram_count and trigram_count values:
-```
+```cmd
 hadoop fs -cat out1/*
 ```
 lets say unigram_count = 1000, bigram_count =999 and trigram_count = 998
 
 Then run the second map reduce job:
-```
+```cmd
 mapred streaming -file map2.py -mapper "python map2.py 1000 999 9998" -file red2.py -reducer "python red2.py" -input out1/* -output out2
 
 haoop fs -cat out2/*
