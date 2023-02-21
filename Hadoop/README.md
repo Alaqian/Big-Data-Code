@@ -2,6 +2,17 @@
 
 ## Running the jobs
 The code failed on all of the homework files but I was able to run it on smaller files. The file 'juan.txt' in this folder was used to generate the results. Source: https://en.wikipedia.org/wiki/Juan_Rodríguez_Cabrillo
+### Bash
+Run the first map reduce
+```bash
+cat juan.txt | python map1.py |sort |python red1.py >> out1.txt
+```
+read the out.txt file for unigram_count, bigram_count and trigram_count values. The counts are unigram_count = 1492, bigram_count = 1475 and trigram_count = 1458
+
+Then run the second map reduce job:
+```bash
+cat out1.txt |python map2.py 1492 1475 1458 |sort |python red2.py >> out2.txt
+```
 ### Hadoop
 Transfer the files to the Hadoop cluster home directory:
 ```cmd
@@ -31,15 +42,7 @@ mapred streaming -file map2.py -mapper "python map2.py 1492 1475 1458  " -file r
 ```cmd
 haoop fs -cat out2/*
 ```
-### Bash
-Run the first map reduce
-```bash
-cat juan.txt | python map1.py |sort |python red1.py >> out1.txt
-```
-read the out.txt file and run the second map reduce job:
-```bash
-cat out1.txt |python map2.py 1492 1475 1458 |sort |python red2.py >> out2.txt
-```
+
 ## Issues and Considerations
 
 To make this assignment straightforward, a number of considerations were made that make the calculated n-gram count and conditional probabilities inaccurate.
