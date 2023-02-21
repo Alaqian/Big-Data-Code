@@ -26,7 +26,8 @@ def main(separator="\t"):
         try:
             total_count = sum(int(count) for current_word, count in group)
             if "_" in current_word:
-                print >> sys.stderr, current_word + "\t" + str(total_count)
+                pass
+                # print(current_word + " " + str(total_count))
             print("%s%s%d" % (current_word, separator, total_count))
         except ValueError:
             # count was not a number, so silently discard this item

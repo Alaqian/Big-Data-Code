@@ -10,8 +10,7 @@ import sys
 def read_mapper_output(input, separator="\t"):
     for line in input:
         #  return each (key, [value, value, ...]) tuple, though there should only be one per line
-        print(line.split())
-        yield line.split()
+        yield line.rstrip().split("\t")
 
 
 def main(separator="\t"):
@@ -21,13 +20,21 @@ def main(separator="\t"):
     # and creates an iterator that returns consecutive keys and their group:
     #   current_word - string containing a word (the key)
     #   group - iterator yielding all ["&lt;current_word&gt;", "&lt;count&gt;"] items
-    for current_word, group in groupby(data, itemgetter(0)):
+    for key, group in groupby(data, itemgetter(0)):
         # dangerous, could run out of memory, loads everything at once.
         try:
-            total_count = sum(int(count) for current_word, count in group)
-            if "_" in current_word:
-                print >> sys.stderr, current_word + "\t" + str(total_count)
-            print("%s%s%d" % (current_word, separator, total_count))
+            w1 = ""
+            w2 = ""
+            for key, value in group:
+                w1 = key
+                value = value.split()
+                if len(value) == 1:
+                    pw1 = int(value[0])
+                else:
+                    pw1nw2 = int(value[-1])
+                    w2 = str(value[-2])
+            pw2gw1 = pw1nw2 / pw1
+            print("%s%s%d" % ("P(" + w1 + "|" + w2 + ")", "\t", pw2gw1))
         except ValueError:
             # count was not a number, so silently discard this item
             pass
