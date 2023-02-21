@@ -10,9 +10,8 @@ def read_input(input):
         yield line.split()
 
 
-def main(
-    separator="\t",
-):  # default separator is a tab - which is \t - can change it to something else
+def main(unigrams, bigrams, trigrams, separator="\t"):
+    # default separator is a tab - which is \t - can change it to something else
     # input comes from STDIN (standard input) - read and input from standard input
     ngram = read_input(sys.stdin)
 
@@ -23,15 +22,24 @@ def main(
         #
         # tab-delimited; the trivial word count is 1
         n = len(words) - 1
+        div1 = unigrams
+        if n == 2:
+            div1 = bigrams
+            div2 = unigrams
+        elif n == 3:
+            div1 = trigrams
+            div2 = bigrams
         key = value = words[0]
         for i in range(1, n):
             value = key + " " + words[i]
             if i < n - 1:
                 key = key + " " + words[i]
-        value = value + " " + words[n]
-        print("%s%s%s" % (key, separator, value))
+        print("%s%s%s" % (value, separator, str(int(words[n]) / div1)))
+        if n > 1:
+            value = value + " " + str(int(words[n]) / div2)
+            print("%s%s%s" % (key, separator, value))
 
 
 # how to test locally in bash/linus: cat <input> | python mapper.py
 if __name__ == "__main__":
-    main()
+    main(unigrams=int(sys.argv[1]), bigrams=int(sys.argv[2]), trigrams=int(sys.argv[3]))
